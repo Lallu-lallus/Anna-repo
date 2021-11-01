@@ -271,6 +271,18 @@ async def get_all(list):
         id=y.get("imdbID")
         await save_poster(id, v, year, poster)
 
+def split_quotes(text: str) -> List:
+    if not any(text.startswith(char) for char in START_CHAR):
+        return text.split(None, 1)
+    counter = 1  # ignore first char -> is some kind of quote
+    while counter < len(text):
+        if text[counter] == "\\":
+            counter += 1
+        elif text[counter] == text[0] or (text[0] == SMART_OPEN and text[counter] == SMART_CLOSE):
+            break
+        counter += 1
+    else:
+        return text.split(None, 1)
 
 def encode_file_id(s: bytes) -> str:
     r = b""
