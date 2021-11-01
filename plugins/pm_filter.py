@@ -2,8 +2,10 @@
 from info import AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, API_KEY, AUTH_GROUPS
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
+from script import SPELL_TXT
 import re
 import random
+import ayncio
 from pyrogram.errors import UserNotParticipant
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster
 BUTTONS = {}
@@ -143,23 +145,11 @@ async def group(client, message):
                     ]
                 )
         else:
-            Alpha=await client.send_message(
-            chat_id = message.chat.id,
-            text=f"""
-<b>👋Hey {message.from_user.mention}</b>
-
-<b>Sorry, No Movie/Series Related to the Given Word Was Found 🥺</b>
-
-<b>Please Go to Google and Confirm the Correct Spelling 🙏</b>
-
-<b>Click Here To 👉 <a href='https://www.google.com'>🔍 Search 🔎</a> </b>
-
-<b>✍Or Your Spelling Is Correct Report To Admins For Add Requested File :- @admins</b>""",
-            
-            parse_mode="html",
-            reply_to_message_id=message.message_id
-        )
+            alpha=await message.reply_text(text=SPELL.TXT.format(message.from_user.mention))
+            await asyncio.sleep(5)
+            await alpha.delete()
             return
+
         if not btn:
             return
 
