@@ -14,6 +14,7 @@ import os
 import PTN
 import requests
 import json
+from imdb import IMDb
 from typing import List
 from typing import Union
 from info import DATABASE_URI, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, AUTH_CHANNEL, API_KEY
@@ -30,6 +31,8 @@ instance = Instance.from_db(db)
 IClient = AsyncIOMotorClient(DATABASE_URI_2)
 imdbdb=client[DATABASE_NAME_2]
 imdb=Instance.from_db(imdbdb)
+
+imdb = IMDb()
 
 @instance.register
 class Media(Document):
@@ -52,6 +55,8 @@ class temp(object):
     CANCEL = False
     MELCOW = {}
     U_NAME = None
+
+imdb = IMDb()
 
 @imdb.register
 class Poster(Document):
