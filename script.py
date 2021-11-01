@@ -61,3 +61,14 @@ See <i>/help</i> for commands and more details.</b>
 ⭕️<b>Library :</b> <a href='https://docs.pyrogram.org/'>Pyrogram 1.0.7</a>
 
 """
+    SPELL_TXT = """
+<b>👋Hey {}</b>
+
+<b>Sorry, No Movie/Series Related to the Given Word Was Found 🥺</b>
+
+<b>Please Go to Google and Confirm the Correct Spelling 🙏</b>
+
+<b>Click Here To 👉 <a href='https://www.google.com'>🔍 Search 🔎</a> </b>
+
+<b>✍Or Your Spelling Is Correct Report To Admins For Add Requested File :- @admins</b>""",
+"""
